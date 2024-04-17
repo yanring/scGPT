@@ -217,6 +217,7 @@ class TransformerGenerator(nn.Module):
             output["mlm_zero_probs"] = mlm_output["zero_probs"]
 
         cell_emb = self._get_cell_emb_from_layer(transformer_output, values)
+        output["cell_emb"] = cell_emb
         if CLS:
             output["cls_output"] = self.cls_decoder(cell_emb)  # (batch, n_cls)
         if MVC:

@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.224.3/containers/docker-existing-dockerfile
+{
+	"name": "Existing Dockerfile",
+
+	// Sets the run context to one level up instead of the .devcontainer folder.
+	"context": "..",
+
+	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+	"dockerFile": "/home/scratch.zijiey_sw/Algorithm/scGPT/py.dockerfile",
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {},
+	
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [],
+
+    "containerEnv": {
+    },
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Uncomment the next line to run commands after the container is created - for example installing curl.
+	// "postCreateCommand": "apt-get update && apt-get install -y curl",
+
+	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+	"runArgs": [ "--gpus", "all", "-it", "--rm", "--ipc=host", "--privileged"],
+    // "initializeCommand":["ssh-add","/home/zijiey/.ssh/id_rsa"],
+    // "postStartCommand": "pip install torch_geometric cell-gears==0.0.1 flash-attn==1.0.4 dcor",
+    //"initializeCommand": "docker pull nvcr.io/nvidia/pytorch:23.12-py3",
+
+	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+	"mounts": [ 
+        "source=/home/scratch.zijiey_sw/,target=/home/scratch.zijiey_sw/,type=bind,consistency=cached",
+        "source=/home/scratch.shiqingf_sw/,target=/home/scratch.shiqingf_sw/,type=bind,consistency=cached",
+        "source=/home/scratch.lit_sw/,target=/home/scratch.lit_sw/,type=bind,consistency=cached",
+        "source=/home/scratch.shunkangz_gpu,target=/home/scratch.shunkangz_gpu,type=bind,consistency=cached",
+        // "source=/home/scratch.zijiey_sw/.ssh,target=/home/zijiey/.ssh,type=bind,consistency=cached",
+        "source=/home/zijiey,target=/home/zijiey,type=bind,consistency=cached",
+    ],
+    "overrideCommand": false,
+    "build": {
+        "args":{
+            // "BUILDKIT_INLINE_CACHE": "0",
+            // "INCLUDE_CUSTOMIZATION": "true",
+        }
+    },
+    // "dockerComposeFile": "docker-compose.yml",
+
+	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "zijiey"
+}
